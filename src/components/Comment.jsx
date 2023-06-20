@@ -34,7 +34,7 @@ const Text = styled.span`
 function Comment() {
   return (
     <Container>
-      <Avatar scr={{ ProfileImg }} />
+      <Avatar src={ProfileImg} />
       <Details>
         <Name>
           Mohamed Behery <Date>1 hour ago</Date>

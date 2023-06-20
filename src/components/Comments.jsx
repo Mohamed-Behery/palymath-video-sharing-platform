@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import ProfileImg from "../assets/avatar.png";
 import Comment from "./Comment";
 
 const Container = styled.div``;
@@ -25,8 +26,8 @@ function Comments() {
   return (
     <Container>
       <NewComment>
-        <Avatar />
-        <Input placeholder="Add a Comment..." />
+        <Avatar src={ProfileImg} />
+        <Input placeholder="إضافة تعليق..." />
       </NewComment>
       <Comment />
       <Comment />

@@ -38,7 +38,7 @@ export default function Home() {
       <Banner>
         <Background>
           <Overlay>
-            <Title>Playmath</Title>
+            <Title>Palymath</Title>
           </Overlay>
         </Background>
       </Banner>

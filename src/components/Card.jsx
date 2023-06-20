@@ -1,5 +1,8 @@
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
+import Thumbnail from "../assets/thumbnail1.png";
+import ProfileImg from "../assets/avatar.png";
+
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
@@ -9,10 +12,11 @@ const Container = styled.div`
   gap: 10px;
 `;
 const Image = styled.img`
-  width: 100%;
+  /* width: 100%; */
   height: ${(props) => props.type === "sm" ? "100px" : "202px"};
   background-color: #999;
   flex: 1;
+  aspect-ratio: 16 / 9;
   border-radius: 4px;
 `;
 const Details = styled.div`
@@ -51,9 +55,9 @@ function Card({ type }) {
   return (
     <Link to="/video/test" style={{ textDecoration: "none" }}>
       <Container type={type}>
-        <Image type={type} />
+        <Image src={Thumbnail} type={type} />
         <Details  type={type}>
-          <ChannelImage  type={type} />
+          <ChannelImage src={ProfileImg} type={type} />
           <Texts>
             <Title>عنوان الفيديو</Title>
             <ChannelName>صانع المحتوي</ChannelName>

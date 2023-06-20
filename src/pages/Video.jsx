@@ -1,10 +1,11 @@
 import { styled } from "styled-components";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import ShareIcon from "@mui/icons-material/Share";
-import Comments from "../components/Comments"
-import Card from "../components/Card"
+import Comments from "../components/Comments";
+import Card from "../components/Card";
+import ProfileImg from "../assets/avatar.png";
+
 
 const Container = styled.div`
   display: flex;
@@ -75,84 +76,75 @@ const ChannelCounter = styled.span`
   font-size: 12px;
 `;
 const Description = styled.p`
-font-size: 14px;
+  font-size: 14px;
 `;
-const Subscribe = styled.button`
-background-color: #cc1a00;
-font-weight: 500;
-color: #fff;
-border: none;
-border-radius: 3px;
-padding: 10px 20px;
-height: max-content;
-cursor: pointer;
+const Subscribe = styled.div`
+  background-color: #0061ab;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 8px 24px;
+  height: max-content;
+  cursor: pointer;
 `;
 
 export default function Video() {
   return (
     <Container>
-    <Content>
-      <VideoWrapper>
-        <iframe
-          width="1120"
-          height="630"
-          src="https://www.youtube.com/embed/9lTj7JkTSGo"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
-      </VideoWrapper>
-      <Title>Test Video</Title>
-      <Details>
-        <Info>13K views • 2 hours ago</Info>
-        <Buttons>
-          <Button>
-            <ThumbUpIcon />
-            123
-          </Button>
-          <Button>
-            <ThumbDownIcon /> Dislike
-          </Button>
-          <Button>
-            <ShareIcon />
-            Share
-          </Button>
-          <Button>
-            <SaveAltIcon />
-            Save
-          </Button>
-        </Buttons>
-      </Details>
-      <Hr />
-      <Channel>
-        <ChannelInfo>
-          <Image />
-          <ChannelDetail>
-            <ChannelName>Mohamed Behery</ChannelName>
-            <ChannelCounter>13K Subscribers</ChannelCounter>
-            <Description>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Consequatur fuga nihil odit asperiores, facere, exercitationem
-              ut ea optio adipisci incidunt eligendi tenetur doloribus error
-              nostrum
-            </Description>
-          </ChannelDetail>
-        </ChannelInfo>
-        <Subscribe>SUBSCRIBE</Subscribe>
-      </Channel>
-      <Hr />
-      <Comments />
-    </Content>
-    <Recommendation>
-      <Card type="sm" />
-      <Card type="sm" />
-      <Card type="sm" />
-      <Card type="sm" />
-      <Card type="sm" />
-      <Card type="sm" />
-      <Card type="sm" />
-    </Recommendation>
-  </Container>
+      <Content>
+        <VideoWrapper>
+          <iframe
+            width="1205"
+            height="630"
+            src="https://www.youtube.com/embed/9lTj7JkTSGo"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </VideoWrapper>
+        <Title>عنوان الفيديو</Title>
+        <Details>
+          <Info>المشاهدات • المدة</Info>
+          <Buttons>
+            <Button>
+              <ThumbUpIcon />
+              123
+            </Button>
+            <Button>
+              <ThumbDownIcon /> لم يعجبني
+            </Button>
+            <Button>
+              <ShareIcon />
+              مشاركة
+            </Button>
+          </Buttons>
+        </Details>
+        <Hr />
+        <Channel>
+          <ChannelInfo>
+            <Image src={ProfileImg} />
+            <ChannelDetail>
+              <ChannelName>صانع المحتوي</ChannelName>
+              <ChannelCounter>عدد المتابعين</ChannelCounter>
+              <Description>وصف الفيديو</Description>
+            </ChannelDetail>
+          </ChannelInfo>
+          <Subscribe>متابعة</Subscribe>
+        </Channel>
+        <Hr />
+        <Comments />
+      </Content>
+      <Recommendation>
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+      </Recommendation>
+    </Container>
   );
 }
