@@ -1,13 +1,29 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: normal;
+  scrollbar-color: #0061ab #ddd;
+}
+::-webkit-scrollbar {
+  width: 0.6vw;
+}
+::-webkit-scrollbar-thumb {
+  background: #0061ab;
+}
+::-webkit-scrollbar-track {
+  background: #ddd;
+}
+body {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 500;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
 }
