@@ -20,15 +20,14 @@ const RightSection = styled.div`
   align-items: center;
   cursor: pointer;
 `;
-const MiddleSection = styled.div`
-  display: flex;
-  align-items: center;
-`;
-const LeftSection = styled.div``;
 const Logo = styled.img`
   width: 150px;
   user-select: none;
   margin-top: 5px;
+`;
+const MiddleSection = styled.div`
+  display: flex;
+  align-items: center;
 `;
 const Search = styled.form`
   display: flex;
@@ -40,6 +39,9 @@ const Search = styled.form`
   border-radius: 25px;
   padding: 8px 12px;
   margin: auto;
+  @media screen and (max-width: 992px) {
+    width: 90%;
+}
 `;
 const SearchInput = styled.input`
   font-size: 17px;
@@ -51,17 +53,18 @@ const SearchInput = styled.input`
   color: ${({ theme }) => theme.text};
   font-weight: 500;
 `;
-const Avatar = styled.img`
-  width: 35px;
-  cursor: pointer;
-  border-radius: 50%;
-  margin-top: 5px;
-`;
 const ThemeSwitcher = styled.div`
   margin-right: 10px;
   cursor: pointer;
   user-select: none;
   color: ${({ theme }) => theme.text};
+`;
+const LeftSection = styled.div``;
+const Avatar = styled.img`
+  width: 35px;
+  cursor: pointer;
+  border-radius: 50%;
+  margin-top: 5px;
 `;
 export default function Navbar({ darkMode, setDarkMode }) {
   return (

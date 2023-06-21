@@ -2,6 +2,24 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 96px);
+`;
+const Wrapper = styled.div`
+  overflow: hidden;
+  width: 390px;
+  background: ${({ theme }) => theme.neutral};
+  padding: 30px;
+  border: 1px solid ${({ theme }) => theme.border};
+  @media screen and (max-width: 420px) {
+    width: 90%;
+}
+`;
+
 const FormWrapper = styled.form`
   width: 100%;
   background: ${({ theme }) => theme.neutral};
@@ -89,7 +107,9 @@ export default function Form({
   const hasRedirect = !!redirect;
 
   return (
-    <FormWrapper>
+    <Container>
+      <Wrapper>
+      <FormWrapper>
       <FormTitle>{title}</FormTitle>
       {formArr.map(({ label, name, type, placeholder }, index) => (
         <FormControl key={index}>
@@ -122,6 +142,8 @@ export default function Form({
         </Redirect>
       )}
     </FormWrapper>
+      </Wrapper>
+    </Container>
   );
 }
 Form.defaultProps = {

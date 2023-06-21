@@ -1,20 +1,5 @@
-import { styled } from "styled-components";
 import Form from "../components/form/Form";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 96px);
-`;
-const Wrapper = styled.div`
-  overflow: hidden;
-  width: 390px;
-  background: ${({ theme }) => theme.neutral};
-  padding: 30px;
-  border: 1px solid ${({ theme }) => theme.border};
-`;
 
 export default function Register() {
   const onSubmitHandler = (Form, callback) => {
@@ -23,8 +8,6 @@ export default function Register() {
   };
 
   return (
-    <Container>
-      <Wrapper>
         <Form
           title={"إنشاء حساب"}
           formArr={formArr}
@@ -38,8 +21,6 @@ export default function Register() {
             },
           }}
         />
-      </Wrapper>
-    </Container>
   );
 }
 
