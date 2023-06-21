@@ -37,11 +37,10 @@ function Comment() {
       <Avatar src={ProfileImg} />
       <Details>
         <Name>
-          Mohamed Behery <Date>1 hour ago</Date>
+          اسم المستخدم <Date>منذ ساعة</Date>
         </Name>
         <Text>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum,
-          consequatur.
+          محتوي التعليق
         </Text>
       </Details>
     </Container>

@@ -16,9 +16,9 @@ const Wrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.soft};
 `;
 
-export default function Signin() {
+export default function Register() {
   const onSubmitHandler = (Form, callback) => {
-    console.log("sign in submitted: ", Form);
+    console.log("register submitted: ", Form);
     callback();
   };
 
@@ -26,9 +26,17 @@ export default function Signin() {
     <Container>
       <Wrapper>
         <Form
-          title={"تسجيل الدخول"}
+          title={"إنشاء حساب"}
           formArr={formArr}
+          submitBtn={"إنشاء حساب"}
           onSubmit={onSubmitHandler}
+          redirect={{
+            label: "لديك حساب بالفعل ؟",
+            link: {
+              label: "تسجيل الدخول",
+              to: "/signin",
+            },
+          }}
         />
       </Wrapper>
     </Container>
@@ -36,6 +44,12 @@ export default function Signin() {
 }
 
 const formArr = [
+  {
+    label: "الاسم",
+    name: "name",
+    placeholder: "الاسم",
+    type: "text",
+  },
   {
     label: "البريد الإلكتروني",
     name: "email",
@@ -46,6 +60,12 @@ const formArr = [
     label: "كلمة السر",
     name: "password",
     placeholder: "كلمة السر",
+    type: "password",
+  },
+  {
+    label: "تأكيد كلمة السر",
+    name: "confirmPassword",
+    placeholder: "تأكيد كلمة السر",
     type: "password",
   },
 ];

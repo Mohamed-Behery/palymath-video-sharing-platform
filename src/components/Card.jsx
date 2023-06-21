@@ -12,11 +12,10 @@ const Container = styled.div`
   gap: 10px;
 `;
 const Image = styled.img`
-  /* width: 100%; */
+  width: 100%;
   height: ${(props) => props.type === "sm" ? "100px" : "202px"};
   background-color: #999;
-  flex: 1;
-  aspect-ratio: 16 / 9;
+  flex: 0.5;
   border-radius: 4px;
 `;
 const Details = styled.div`

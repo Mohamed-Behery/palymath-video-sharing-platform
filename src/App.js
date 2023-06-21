@@ -7,9 +7,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Video from "./pages/Video";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
+import Register from "./pages/Register";
 
 const Container = styled.div`
-  /* display: flex; */
+  min-height: calc(100vh - 56px);
 `;
 const Main = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -20,7 +21,7 @@ const Wrapper = styled.div`
 `;
 
 export default function App() {
-  const [darkMode, SetDarkMode] = useState(true);
+  const [darkMode, SetDarkMode] = useState(false);
 
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
@@ -38,6 +39,7 @@ export default function App() {
                     <Route path=":id" element={<Video />} />
                   </Route>
                   <Route path="signin" element={<Signin />} />
+                  <Route path="register" element={<Register />} />
                 </Route>
               </Routes>
             </Wrapper>

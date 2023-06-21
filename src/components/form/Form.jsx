@@ -1,0 +1,150 @@
+import { useState } from "react";
+import { styled } from "styled-components";
+import { Link } from "react-router-dom";
+
+const FormWrapper = styled.form`
+  width: 100%;
+  background: ${({ theme }) => theme.bgLighter};
+  border-radius: 4px;
+  padding: 16px;
+`;
+const FormTitle = styled.span`
+  font-size: 24px;
+  font-weight: 600;
+`;
+const FormControl = styled.div`
+  :first-of-type {
+    margin-top: 8px;
+  }
+  :not(:last-of-type) {
+    margin-bottom: 8px;
+  }
+`;
+const Label = styled.label`
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 4px;
+`;
+const Input = styled.input`
+  outline: none;
+  border: 1px solid ${({ theme }) => theme.soft};
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  color: ${({ theme }) => theme.text};
+  background: transparent;
+  font-family: inherit;
+`;
+const Button = styled.button`
+  font-family: inherit;
+  outline: none;
+  border: none;
+  letter-spacing: inherit;
+  color: inherit;
+  text-align: inherit;
+  width: 100%;
+  background: ${({ theme }) => theme.bg};
+  color: ${({ theme }) => theme.text};
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  margin-top: 16px;
+  cursor: pointer;
+`;
+const Redirect = styled.div`
+  font-size: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+`;
+const RedirectLabel = styled.span`
+  color: ${({ theme }) => theme.textSoft};
+`;
+const RedirectLink = styled(Link)`
+  color: ${({ theme }) => theme.text};
+`;
+
+const prepareForm = (formArr) => {
+  return formArr.reduce((r, v) => ({ ...r, [v.name]: "" }), {});
+};
+
+export default function Form({
+  title,
+  formArr,
+  submitBtn,
+  onSubmit,
+  redirect,
+}) {
+  const initialForm = prepareForm(formArr);
+  const [form, setForm] = useState(initialForm);
+  const onSubmitHandler = () => onSubmit(form, () => setForm(initialForm));
+  const onChangeHandler = (e) =>
+    setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
+  const hasRedirect = !!redirect;
+
+  return (
+    <FormWrapper>
+      <FormTitle>{title}</FormTitle>
+      {formArr.map(({ label, name, type, placeholder }, index) => (
+        <FormControl key={index}>
+          <Label htmlFor={name}>{label}</Label>
+          <Input
+            id={name}
+            name={name}
+            type={type}
+            value={form[name]}
+            placeholder={placeholder}
+            required={true}
+            onChange={(e) => onChangeHandler(e)}
+          />
+        </FormControl>
+      ))}
+      <Button
+        onClick={(e) => {
+          e.preventDefault();
+          onSubmitHandler();
+        }}
+      >
+        {submitBtn}
+      </Button>
+      {hasRedirect && (
+        <Redirect>
+          <RedirectLabel>{redirect.label}&nbsp;</RedirectLabel>
+          <RedirectLink to={redirect.link.to}>
+            {redirect.link.label}
+          </RedirectLink>
+        </Redirect>
+      )}
+    </FormWrapper>
+  );
+}
+Form.defaultProps = {
+  title: "تسجيل الدخول",
+  formArr: [
+    {
+      label: "البريد الإلكتروني",
+      name: "email",
+      placeholder: "البريد الإلكتروني",
+      type: "email",
+    },
+    {
+      label: "كلمة السر",
+      name: "password",
+      placeholder: "كلمة السر",
+      type: "password",
+    },
+  ],
+  submitBtn: "تسجيل الدخول",
+  onSumbit: console.log("Successful"),
+  redirect: {
+    label: "ليس لديك حساب ؟",
+    link: {
+      label: "قم بإنشاء حساب الأن",
+      to: "/register",
+    },
+  },
+};

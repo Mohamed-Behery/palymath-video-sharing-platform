@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import LogoImg from "../assets/palymath.png";
-import Avatar from "../assets/avatar.png";
+import ProfileImg from "../assets/avatar.png";
 
 const Container = styled.header`
   position: sticky;
@@ -51,7 +51,7 @@ const SearchInput = styled.input`
   color: ${({ theme }) => theme.text};
   font-weight: 500;
 `;
-const ProfileImg = styled.img`
+const Avatar = styled.img`
   width: 35px;
   cursor: pointer;
   border-radius: 50%;
@@ -62,7 +62,7 @@ const ThemeSwitcher = styled.div`
   cursor: pointer;
   user-select: none;
 `;
-function Navbar({ darkMode, setDarkMode }) {
+export default function Navbar({ darkMode, setDarkMode }) {
   return (
     <Container>
       <RightSection>
@@ -79,10 +79,8 @@ function Navbar({ darkMode, setDarkMode }) {
           </ThemeSwitcher>
       </MiddleSection>
       <LeftSection>
-        <ProfileImg src={Avatar} />
+        <Avatar src={ProfileImg} />
       </LeftSection>
     </Container>
   );
 }
-
-export default Navbar;

@@ -1,14 +1,14 @@
-export const darkTheme = {
-  bg: "#181818",
-  bgLighter: "#202020",
-  text: "#fff",
-  textSoft: "#aaa",
-  soft: "#373737",
-};
 export const lightTheme = {
-    bg: "#f9f9f9",
-    bgLighter: "#fff",
-    text: "#000",
-    textSoft: "#606060",
-    soft: "#f5f5f5",
-  };
+  white: "#fff",
+  primary: "#0061ab",
+  text: "#093a5e",
+  background: "#f9f9f9",
+  border: "#ddd",
+};
+export const darkTheme = {
+  white: "#1c1c1d",
+  primary: "#fff",
+  text: "#ddd",
+  background: "#0f0f0f",
+  border: "#ddd",
+};
