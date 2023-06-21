@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 const Content = styled.div`
   flex-basis: 69%;
-  @media screen and (max-width: 1150px) {
+  @media screen and (max-width: 1320px) {
     flex-basis: 100%;
   }
 `;
@@ -50,7 +50,9 @@ const Button = styled.div`
   cursor: pointer;
 `;
 const Hr = styled.hr`
-  border: 0.5px solid ${({ theme }) => theme.border};
+  border: 0;
+  height: 1px;
+  background: ${({ theme }) => theme.border};
   margin: 15px 0;
 `;
 const Channel = styled.div`
@@ -96,7 +98,7 @@ const Follow = styled.div`
 `;
 const Recommendation = styled.div`
   flex-basis: 29%;
-  @media screen and (max-width: 1150px) {
+  @media screen and (max-width: 1050px) {
     flex-basis: 100%;
   }
 `;
@@ -137,6 +139,7 @@ export default function Video() {
         </Channel>
         <Hr />
         <Comments />
+        <Hr />
       </Content>
       <Recommendation>
         <Card type="sm" />
