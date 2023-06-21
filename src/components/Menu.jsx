@@ -1,7 +1,7 @@
-import {styled} from "styled-components"
+import { styled } from "styled-components";
 import ProfileImg from "../assets/avatar.png";
 import { Link } from "react-router-dom";
-import React from "react"
+import React from "react";
 
 const Container = styled.div`
   position: absolute;
@@ -13,7 +13,7 @@ const Container = styled.div`
   z-index: 999;
 `;
 const MenuWrapper = styled.div`
-  background: ${({ theme }) => theme.bg};
+  background: ${({ theme }) => theme.neutral};
   padding: 15px 20px 5px;
   border: 1px solid ${({ theme }) => theme.border};
   margin: 10px;
@@ -39,44 +39,93 @@ const UserDetails = styled.div`
 const MenuImg = styled.img`
   width: 100%;
   border-radius: 50%;
-`
+`;
 const UserName = styled.span`
   font-weight: 600;
   position: relative;
   bottom: 2px;
-  color: ${({theme}) => theme.text};
+  color: ${({ theme }) => theme.text};
 `;
 const Profile = styled(Link)`
   font-size: 15px;
-  color: ${({theme}) => theme.primary};
+  color: ${({ theme }) => theme.primary};
   position: relative;
   top: 3px;
 `;
 const Hr = styled.hr`
-  background: ${({theme}) => theme.border};
+  background: ${({ theme }) => theme.border};
   border: 0;
   height: 1px;
   margin: 10px 0;
 `;
+const LinksWrapper = styled.ul``;
+const LinkLi = styled.li`
+  display: flex;
+  align-items: center;
+`;
+const LinkContent = styled(Link)`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.text};
+  margin: 5px 0;
+  padding: 15px 10px;
+  border-radius: 5px;
+  &:hover {
+    background: ${({ theme }) => theme.bg};
+    border: 1px solid ${({ theme }) => theme.border};
+  }
+`;
+const LinkName = styled.span`
+  width: 100%;
+`;
+const Copyrights = styled.p`
+  color: ${({ theme }) => theme.text};
+  font-weight: 400;
+  white-space: nowrap;
+`;
 
 export default function Menu(props) {
-  return (props.trigger) ? (
+  return props.trigger ? (
     <Container>
-    <MenuWrapper>
-      <UserInfo>
-       <ProfileWrapper>
-       <ImgWrapper>
-      <MenuImg src={ProfileImg} />
-       </ImgWrapper>
-        <UserDetails>
-          <UserName>اسم المستخدم</UserName>
-          <Profile to="/profile">الحساب الشخصي</Profile>
-        </UserDetails>
-       </ProfileWrapper>
-      </UserInfo>
-      <Hr />
-      {props.childern}
-    </MenuWrapper>
-  </Container>
-  ) : "";
+      <MenuWrapper>
+        <UserInfo>
+          <ProfileWrapper>
+            <ImgWrapper>
+              <MenuImg src={ProfileImg} />
+            </ImgWrapper>
+            <UserDetails>
+              <UserName>اسم المستخدم</UserName>
+              <Profile to="/profile">الحساب الشخصي</Profile>
+            </UserDetails>
+          </ProfileWrapper>
+        </UserInfo>
+        <Hr />
+        <LinksWrapper>
+          <LinkLi>
+            <LinkContent to="/">
+              <LinkName>تصفح الفيديوهات</LinkName>
+            </LinkContent>
+          </LinkLi>
+          <LinkLi>
+            <LinkContent to="/trending">
+              <LinkName>الأعلي مشاهدة</LinkName>
+            </LinkContent>
+          </LinkLi>
+          <LinkLi>
+            <LinkContent to="/login">
+              <LinkName>تسجيل الدخول</LinkName>
+            </LinkContent>
+          </LinkLi>
+        </LinksWrapper>
+        <Hr />
+        <Copyrights>
+          جميع الحقوق محفوظة <br /> Palymath © 2023
+        </Copyrights>
+      </MenuWrapper>
+    </Container>
+  ) : (
+    ""
+  );
 }
