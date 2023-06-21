@@ -1,5 +1,4 @@
-import Form from "../components/form/Form";
-
+import Form from "../components/Form";
 
 export default function Register() {
   const onSubmitHandler = (Form, callback) => {
@@ -8,19 +7,19 @@ export default function Register() {
   };
 
   return (
-        <Form
-          title={"إنشاء حساب"}
-          formArr={formArr}
-          submitBtn={"إنشاء حساب"}
-          onSubmit={onSubmitHandler}
-          redirect={{
-            label: "لديك حساب بالفعل ؟",
-            link: {
-              label: "تسجيل الدخول",
-              to: "/signin",
-            },
-          }}
-        />
+    <Form
+      title={"إنشاء حساب"}
+      formArr={formArr}
+      submitBtn={"إنشاء حساب"}
+      onSubmit={onSubmitHandler}
+      redirect={{
+        label: "لديك حساب بالفعل ؟",
+        link: {
+          label: "تسجيل الدخول",
+          to: "/signin",
+        },
+      }}
+    />
   );
 }
 

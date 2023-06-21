@@ -14,8 +14,9 @@ const Container = styled.div`
 const Image = styled.img`
   width: 100%;
   height: ${(props) => props.type === "sm" ? "100px" : "202px"};
+  aspect-ratio: 16 / 9;
   background-color: #999;
-  flex: 0.5;
+  flex: ${(props) => props.type === "sm" ? "0.5" : "1"};
   border-radius: 4px;
 `;
 const Details = styled.div`
@@ -54,7 +55,7 @@ const Info = styled.div`
 
 function Card({ type }) {
   return (
-    <Link to="/video/test" style={{ textDecoration: "none" }}>
+    <Link to="/video/test">
       <Container type={type}>
         <Image src={Thumbnail} type={type} />
         <Details  type={type}>

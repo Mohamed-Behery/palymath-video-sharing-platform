@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import LogoImg from "../assets/palymath.png";
+import SearchIcon from "@mui/icons-material/Search";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import ProfileImg from "../assets/avatar.png";
+import { useState } from "react";
+import Menu from "./Menu";
 
 const Container = styled.header`
   position: sticky;
@@ -13,7 +18,7 @@ const Container = styled.header`
   padding: 0 5%;
   background: ${({ theme }) => theme.neutral};
   border-bottom: 1px solid ${({ theme }) => theme.border};
-  z-index: 999;
+  z-index: 998;
 `;
 const RightSection = styled.div`
   display: flex;
@@ -37,18 +42,19 @@ const Search = styled.form`
   width: 550px;
   border: 1px solid ${({ theme }) => theme.border};
   border-radius: 25px;
+  color: ${({ theme }) => theme.text};
   padding: 8px 12px;
   margin: auto;
   @media screen and (max-width: 920px) {
     width: 350px;
-}
-@media screen and (max-width: 665px) {
+  }
+  @media screen and (max-width: 665px) {
     width: 60%;
-}
+  }
 `;
 const SearchInput = styled.input`
-  font-size: 17px;
-  font-family: "Tajawal", sans-serif;
+  /* font-size: 17px; */
+  font-family: inherit;
   width: 95%;
   border: 0;
   outline: 0;
@@ -65,7 +71,7 @@ const ThemeSwitcher = styled.div`
     margin-right: 0;
     position: relative;
     left: 5px;
-}
+  }
 `;
 const LeftSection = styled.div``;
 const Avatar = styled.img`
@@ -73,8 +79,11 @@ const Avatar = styled.img`
   cursor: pointer;
   border-radius: 50%;
   margin-top: 5px;
+  position: relative;
 `;
+
 export default function Navbar({ darkMode, setDarkMode }) {
+  const [menu, setMenu] = useState(false);
   return (
     <Container>
       <RightSection>
@@ -85,13 +94,25 @@ export default function Navbar({ darkMode, setDarkMode }) {
       <MiddleSection>
         <Search>
           <SearchInput placeholder="بحث" />
+          <SearchIcon
+            style={{
+              cursor: "pointer",
+              paddingRight: "5px",
+              borderRight: "1px solid #ddd",
+            }}
+          />
         </Search>
         <ThemeSwitcher onClick={() => setDarkMode(!darkMode)}>
-        {darkMode ? "Light" : "Dark"}
-          </ThemeSwitcher>
+          {darkMode ? (
+            <LightModeIcon style={{ position: "relative", top: "3px" }} />
+          ) : (
+            <DarkModeIcon style={{ position: "relative", top: "3px" }} />
+          )}
+        </ThemeSwitcher>
       </MiddleSection>
       <LeftSection>
-        <Avatar src={ProfileImg} />
+        <Avatar src={ProfileImg} onClick={() => setMenu(!menu)} />
+        <Menu trigger={menu} />
       </LeftSection>
     </Container>
   );

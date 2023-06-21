@@ -1,4 +1,4 @@
-import Form from "../components/form/Form";
+import Form from "../components/Form";
 
 export default function Signin() {
   const onSubmitHandler = (Form, callback) => {
@@ -7,11 +7,7 @@ export default function Signin() {
   };
 
   return (
-        <Form
-          title={"تسجيل الدخول"}
-          formArr={formArr}
-          onSubmit={onSubmitHandler}
-        />
+    <Form title={"تسجيل الدخول"} formArr={formArr} onSubmit={onSubmitHandler} />
   );
 }
 

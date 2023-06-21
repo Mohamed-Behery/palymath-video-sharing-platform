@@ -10,13 +10,13 @@ import Signin from "./pages/Signin";
 import Register from "./pages/Register";
 
 const Container = styled.div`
-  min-height: calc(100vh - 96px);
+  min-height: calc(100vh - 56px);
 `;
 const Main = styled.div`
   background-color: ${({ theme }) => theme.bg};
 `;
 const Wrapper = styled.div`
-  padding: 20px 5% 20px;
+  padding: 20px 5%;
 `;
 
 export default function App() {
