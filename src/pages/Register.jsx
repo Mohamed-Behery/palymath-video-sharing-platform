@@ -6,14 +6,14 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 56px);
+  min-height: calc(100vh - 96px);
 `;
 const Wrapper = styled.div`
   overflow: hidden;
   width: 390px;
-  background: ${({ theme }) => theme.bgLighter};
+  background: ${({ theme }) => theme.neutral};
   padding: 30px;
-  border: 1px solid ${({ theme }) => theme.soft};
+  border: 1px solid ${({ theme }) => theme.border};
 `;
 
 export default function Register() {

@@ -15,11 +15,12 @@ const Avatar = styled.img`
 `;
 const Input = styled.input`
   border: none;
-  border-bottom: 1px solid ${({ theme }) => theme.soft};
+  border-bottom: 1px solid ${({ theme }) => theme.border};
   background-color: transparent;
   outline: none;
   padding: 5px;
   width: 100%;
+  color: ${({ theme }) => theme.text};
 `;
 
 function Comments() {

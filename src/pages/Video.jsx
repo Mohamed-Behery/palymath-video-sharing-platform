@@ -28,7 +28,8 @@ const Details = styled.div`
   justify-content: space-between;
 `;
 const Info = styled.span`
-  color: ${({ theme }) => theme.textSoft};
+  color: ${({ theme }) => theme.text};
+  font-weight: 300;
 `;
 const Buttons = styled.div`
   display: flex;
@@ -42,7 +43,7 @@ const Button = styled.div`
   cursor: pointer;
 `;
 const Hr = styled.hr`
-  border: 0.5px solid ${({ theme }) => theme.soft};
+  border: 0.5px solid ${({ theme }) => theme.border};
   margin: 15px 0;
 `;
 const Recommendation = styled.div`
@@ -72,16 +73,17 @@ const ChannelName = styled.span`
 const ChannelCounter = styled.span`
   margin-top: 5px;
   margin-bottom: 20px;
-  color: ${({ theme }) => theme.textSoft};
+  color: ${({ theme }) => theme.text};
+  font-weight: 300;
   font-size: 12px;
 `;
 const Description = styled.p`
   font-size: 14px;
 `;
 const Subscribe = styled.div`
-  background-color: #0061ab;
+  background-color: ${({ theme }) => theme.primary};
   font-weight: 500;
-  color: #fff;
+  color: ${({ theme }) => theme.neutral};
   border: none;
   border-radius: 24px;
   padding: 8px 24px;

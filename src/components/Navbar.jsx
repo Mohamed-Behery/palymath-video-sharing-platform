@@ -11,8 +11,8 @@ const Container = styled.header`
   align-items: center;
   height: 56px;
   padding: 0 96px;
-  background: ${({ theme }) => theme.bgLighter};
-  border-bottom: 1px solid ${({ theme }) => theme.soft};
+  background: ${({ theme }) => theme.neutral};
+  border-bottom: 1px solid ${({ theme }) => theme.border};
   z-index: 999;
 `;
 const RightSection = styled.div`
@@ -36,7 +36,7 @@ const Search = styled.form`
   justify-content: space-between;
   height: 35px;
   width: 550px;
-  border: 1px solid ${({ theme }) => theme.soft};
+  border: 1px solid ${({ theme }) => theme.border};
   border-radius: 25px;
   padding: 8px 12px;
   margin: auto;
@@ -61,6 +61,7 @@ const ThemeSwitcher = styled.div`
   margin-right: 10px;
   cursor: pointer;
   user-select: none;
+  color: ${({ theme }) => theme.text};
 `;
 export default function Navbar({ darkMode, setDarkMode }) {
   return (

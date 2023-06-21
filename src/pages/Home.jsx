@@ -12,12 +12,6 @@ const Cards = styled.div`
 const Banner = styled.div`
   text-align: center;
 `;
-const Title = styled.h1`
-  font-size: 64px;
-  color: #ddd;
-  font-weight: 700;
-  user-select: none;
-`;
 const Background = styled.div`
   position: relative;
   background-image: url(${BannerBg});
@@ -38,7 +32,6 @@ export default function Home() {
       <Banner>
         <Background>
           <Overlay>
-            <Title>Palymath</Title>
           </Overlay>
         </Background>
       </Banner>

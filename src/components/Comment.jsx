@@ -23,8 +23,8 @@ const Name = styled.span`
 `;
 const Date = styled.span`
   font-size: 12px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.textSoft};
+  font-weight: 300;
+  color: ${({ theme }) => theme.text};
   margin-left: 5px;
 `;
 const Text = styled.span`

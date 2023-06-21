@@ -7,9 +7,9 @@ import ProfileImg from "../assets/avatar.png";
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
   margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
-  cursor: pointer;
   display: ${(props) => props.type === "sm" && "flex"};
   gap: 10px;
+  cursor: pointer;
 `;
 const Image = styled.img`
   width: 100%;
@@ -41,13 +41,15 @@ const Title = styled.h1`
 
 const ChannelName = styled.h2`
   font-size: 14px;
-  color: ${({ theme }) => theme.textSoft};
+  color: ${({ theme }) => theme.text};
+  font-weight: 400;
   margin: 10px 0;
 `;
 
 const Info = styled.div`
   font-size: 14px;
-  color: ${({ theme }) => theme.textSoft};
+  color: ${({ theme }) => theme.text};
+  font-weight: 300;
 `;
 
 function Card({ type }) {

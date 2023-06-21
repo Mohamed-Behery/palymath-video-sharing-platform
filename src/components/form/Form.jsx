@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 
 const FormWrapper = styled.form`
   width: 100%;
-  background: ${({ theme }) => theme.bgLighter};
+  background: ${({ theme }) => theme.neutral};
   border-radius: 4px;
   padding: 16px;
 `;
 const FormTitle = styled.span`
   font-size: 24px;
   font-weight: 600;
+  color: ${({ theme }) => theme.text};
+  text-align: center;
 `;
 const FormControl = styled.div`
   :first-of-type {
@@ -25,10 +27,11 @@ const Label = styled.label`
   font-size: 14px;
   font-weight: 600;
   margin-left: 4px;
+  color: ${({ theme }) => theme.text};
 `;
 const Input = styled.input`
   outline: none;
-  border: 1px solid ${({ theme }) => theme.soft};
+  border: 1px solid ${({ theme }) => theme.border};
   width: 100%;
   padding: 8px;
   font-size: 14px;
@@ -41,17 +44,15 @@ const Button = styled.button`
   font-family: inherit;
   outline: none;
   border: none;
-  letter-spacing: inherit;
-  color: inherit;
-  text-align: inherit;
   width: 100%;
-  background: ${({ theme }) => theme.bg};
-  color: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.neutral};
   padding: 8px;
   display: flex;
   justify-content: center;
   border-radius: 4px;
   margin-top: 16px;
+  font-weight: 600;
   cursor: pointer;
 `;
 const Redirect = styled.div`
@@ -62,7 +63,8 @@ const Redirect = styled.div`
   margin-top: 8px;
 `;
 const RedirectLabel = styled.span`
-  color: ${({ theme }) => theme.textSoft};
+  color: ${({ theme }) => theme.text};
+  font-weight: 400;
 `;
 const RedirectLink = styled(Link)`
   color: ${({ theme }) => theme.text};

@@ -10,11 +10,10 @@ import Signin from "./pages/Signin";
 import Register from "./pages/Register";
 
 const Container = styled.div`
-  min-height: calc(100vh - 56px);
+  min-height: calc(100vh - 96px);
 `;
 const Main = styled.div`
   background-color: ${({ theme }) => theme.bg};
-  color: ${({ theme }) => theme.text};
 `;
 const Wrapper = styled.div`
   padding: 20px 5% 20px;
@@ -39,7 +38,9 @@ export default function App() {
                     <Route path=":id" element={<Video />} />
                   </Route>
                   <Route path="signin" element={<Signin />} />
+                  <Route path="login" element={<Signin />} />
                   <Route path="register" element={<Register />} />
+                  <Route path="signup" element={<Register />} />
                 </Route>
               </Routes>
             </Wrapper>
