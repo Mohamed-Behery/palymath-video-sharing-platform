@@ -5,16 +5,19 @@ import ShareIcon from "@mui/icons-material/Share";
 import Comments from "../components/Comments";
 import Card from "../components/Card";
 import ProfileImg from "../assets/avatar.png";
-
+import Player from "../components/Player";
 
 const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 24px;
 `;
 const Content = styled.div`
-  flex: 5;
+  flex-basis: 69%;
+  @media screen and (max-width: 1150px) {
+    flex-basis: 100%;
+  }
 `;
-const VideoWrapper = styled.div``;
 const Title = styled.h1`
   font-size: 18px;
   font-weight: 400;
@@ -35,6 +38,10 @@ const Buttons = styled.div`
   display: flex;
   gap: 20px;
   color: ${({ theme }) => theme.text};
+  @media screen and (max-width: 440px) {
+    font-size: 12px;
+    gap: 10px;
+  }
 `;
 const Button = styled.div`
   display: flex;
@@ -45,9 +52,6 @@ const Button = styled.div`
 const Hr = styled.hr`
   border: 0.5px solid ${({ theme }) => theme.border};
   margin: 15px 0;
-`;
-const Recommendation = styled.div`
-  flex: 2;
 `;
 const Channel = styled.div`
   display: flex;
@@ -80,7 +84,7 @@ const ChannelCounter = styled.span`
 const Description = styled.p`
   font-size: 14px;
 `;
-const Subscribe = styled.div`
+const Follow = styled.div`
   background-color: ${({ theme }) => theme.primary};
   font-weight: 500;
   color: ${({ theme }) => theme.neutral};
@@ -90,22 +94,18 @@ const Subscribe = styled.div`
   height: max-content;
   cursor: pointer;
 `;
+const Recommendation = styled.div`
+  flex-basis: 29%;
+  @media screen and (max-width: 1150px) {
+    flex-basis: 100%;
+  }
+`;
 
 export default function Video() {
   return (
     <Container>
       <Content>
-        <VideoWrapper>
-          <iframe
-            width="1205"
-            height="630"
-            src="https://www.youtube.com/embed/9lTj7JkTSGo"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </VideoWrapper>
+        <Player />
         <Title>عنوان الفيديو</Title>
         <Details>
           <Info>المشاهدات • المدة</Info>
@@ -133,7 +133,7 @@ export default function Video() {
               <Description>وصف الفيديو</Description>
             </ChannelDetail>
           </ChannelInfo>
-          <Subscribe>متابعة</Subscribe>
+          <Follow>متابعة</Follow>
         </Channel>
         <Hr />
         <Comments />
