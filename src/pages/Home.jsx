@@ -8,6 +8,9 @@ const Cards = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 20px;
+  @media screen and (max-width: 799px) {
+    justify-content: center;
+  }
 `;
 const Banner = styled.div`
   text-align: center;
