@@ -1,7 +1,9 @@
 import { styled } from "styled-components";
-import ProfileImg from "../assets/avatar.png";
 import { Link } from "react-router-dom";
-import React from "react";
+import ProfileImg from "../assets/avatar.png";
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import WhatshotIcon from '@mui/icons-material/Whatshot';
+import LoginIcon from '@mui/icons-material/Login';
 
 const Container = styled.div`
   position: absolute;
@@ -68,6 +70,7 @@ const LinkContent = styled(Link)`
   width: 100%;
   display: flex;
   align-items: center;
+  gap: 10px;
   color: ${({ theme }) => theme.text};
   margin: 5px 0;
   padding: 15px 10px;
@@ -105,16 +108,19 @@ export default function Menu(props) {
         <LinksWrapper>
           <LinkLi>
             <LinkContent to="/">
+              <PlayCircleIcon />
               <LinkName>تصفح الفيديوهات</LinkName>
             </LinkContent>
           </LinkLi>
           <LinkLi>
             <LinkContent to="/trending">
+              <WhatshotIcon />
               <LinkName>الأعلي مشاهدة</LinkName>
             </LinkContent>
           </LinkLi>
           <LinkLi>
             <LinkContent to="/login">
+              <LoginIcon />
               <LinkName>تسجيل الدخول</LinkName>
             </LinkContent>
           </LinkLi>
