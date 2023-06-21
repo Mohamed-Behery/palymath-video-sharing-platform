@@ -10,7 +10,7 @@ const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   height: 56px;
-  padding: 0 96px;
+  padding: 0 5%;
   background: ${({ theme }) => theme.neutral};
   border-bottom: 1px solid ${({ theme }) => theme.border};
   z-index: 999;
@@ -39,8 +39,11 @@ const Search = styled.form`
   border-radius: 25px;
   padding: 8px 12px;
   margin: auto;
-  @media screen and (max-width: 992px) {
-    width: 90%;
+  @media screen and (max-width: 920px) {
+    width: 350px;
+}
+@media screen and (max-width: 665px) {
+    width: 60%;
 }
 `;
 const SearchInput = styled.input`
@@ -58,6 +61,11 @@ const ThemeSwitcher = styled.div`
   cursor: pointer;
   user-select: none;
   color: ${({ theme }) => theme.text};
+  @media screen and (max-width: 520px) {
+    margin-right: 0;
+    position: relative;
+    left: 5px;
+}
 `;
 const LeftSection = styled.div``;
 const Avatar = styled.img`
