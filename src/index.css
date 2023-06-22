@@ -27,3 +27,9 @@ a {
 li {
   list-style: none;
 }
+@media screen and (max-width: 900px) {
+  * {
+    user-select: none !important;
+    cursor: default !important;
+  }
+}

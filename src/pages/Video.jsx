@@ -5,7 +5,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import Comments from "../components/Comments";
 import Card from "../components/Card";
 import ProfileImg from "../assets/avatar.png";
-import Player from "../components/Player";
+import Player from "../components/VideoPlayer/Player";
 
 const Container = styled.div`
   display: flex;

@@ -1,9 +1,11 @@
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 import ProfileImg from "../assets/avatar.png";
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import WhatshotIcon from '@mui/icons-material/Whatshot';
-import LoginIcon from '@mui/icons-material/Login';
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import WhatshotIcon from "@mui/icons-material/Whatshot";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import LoginIcon from "@mui/icons-material/Login";
+import InfoIcon from "@mui/icons-material/Info";
 
 const Container = styled.div`
   position: absolute;
@@ -119,9 +121,21 @@ export default function Menu(props) {
             </LinkContent>
           </LinkLi>
           <LinkLi>
+            <LinkContent to="/following">
+              <PeopleAltIcon />
+              <LinkName>الحسابات التي أتابعها</LinkName>
+            </LinkContent>
+          </LinkLi>
+          <LinkLi>
             <LinkContent to="/login">
               <LoginIcon />
               <LinkName>تسجيل الدخول</LinkName>
+            </LinkContent>
+          </LinkLi>
+          <LinkLi>
+            <LinkContent to="/about">
+              <InfoIcon />
+              <LinkName>حول باليماث</LinkName>
             </LinkContent>
           </LinkLi>
         </LinksWrapper>

@@ -21,6 +21,7 @@ const Input = styled.input`
   padding: 5px;
   width: 100%;
   color: ${({ theme }) => theme.text};
+  font-family: inherit;
 `;
 
 function Comments() {

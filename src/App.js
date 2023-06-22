@@ -12,6 +12,8 @@ import Search from "./pages/Search";
 import Profile from "./pages/Profile";
 import Upload from "./pages/Upload";
 import About from "./pages/About";
+import Following from "./pages/Following";
+import Trending from "./pages/Trending";
 
 const Container = styled.div`
   min-height: calc(100vh - 56px);
@@ -51,6 +53,8 @@ export default function App() {
                   <Route path="profile" element={<Profile />} />
                   <Route path="upload" element={<Upload />} />
                   <Route path="About" element={<About />} />
+                  <Route path="following" element={<Following />} />
+                  <Route path="trending" element={<Trending />} />
                 </Route>
               </Routes>
             </Wrapper>
