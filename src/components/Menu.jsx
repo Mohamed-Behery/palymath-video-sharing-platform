@@ -134,7 +134,7 @@ export default function Menu(props) {
             </LinkContent>
           </LinkLi>
           <LinkLi>
-            <LinkContent to="/uplaod">
+            <LinkContent to="/upload">
               <VideoCallIcon />
               <LinkName>رفع فيديو</LinkName>
             </LinkContent>

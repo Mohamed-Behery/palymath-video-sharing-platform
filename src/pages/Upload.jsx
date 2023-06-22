@@ -16,16 +16,26 @@ const Wrapper = styled.div`
     width: 90%;
   }
 `;
-const Title = styled.h3`
+const Heading = styled.h3`
   color: ${({ theme }) => theme.primary};
   font-size: 24px;
 `;
+const Source = styled.input`
+  margin-top: 16px;
+`;
+const Thumbnail = styled.input``;
+const Title = styled.input``;
+const UploadBtn = styled.button``;
 
 export default function Upload() {
   return (
     <Container>
       <Wrapper>
-        <Title>رفع فيديو جديد</Title>
+        <Heading>رفع فيديو جديد</Heading>
+        <Source type="file" name="videosource" accept="video/*" />
+        <Thumbnail type="file" name="thumbnail" accept="image/*" />
+        <Title type="text" />
+        <UploadBtn>رفع الفيديو</UploadBtn>
       </Wrapper>
     </Container>
   );

@@ -73,6 +73,13 @@ const ThemeSwitcher = styled.div`
     left: 5px;
   }
 `;
+const SearchLink = styled(Link)`
+  cursor: pointer;
+  padding-right: "5px";
+  border-right: 1px solid #ddd;
+  color: ${({ theme }) => theme.text};
+  text-align: center;
+`;
 const LeftSection = styled.div``;
 const Avatar = styled.img`
   width: 35px;
@@ -94,13 +101,9 @@ export default function Navbar({ darkMode, setDarkMode }) {
       <MiddleSection>
         <Search>
           <SearchInput placeholder="بحث" />
-          <SearchIcon
-            style={{
-              cursor: "pointer",
-              paddingRight: "5px",
-              borderRight: "1px solid #ddd",
-            }}
-          />
+          <SearchLink to="/search/test">
+            <SearchIcon style={{ position: "relative", right: "5px", top: "2px" }} />
+          </SearchLink>
         </Search>
         <ThemeSwitcher onClick={() => setDarkMode(!darkMode)}>
           {darkMode ? (
