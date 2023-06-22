@@ -1,7 +1,15 @@
-import React from 'react'
+import { styled } from "styled-components";
+import { Link } from "react-router-dom";
+import Banner from "../components/Banner";
+
+const Container = styled.div``;
+const Wrapper = styled.div``;
 
 export default function About() {
   return (
-    <div>About</div>
-  )
+    <Container>
+      <Banner />
+      <Wrapper></Wrapper>
+    </Container>
+  );
 }

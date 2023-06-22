@@ -16,14 +16,15 @@ import Following from "./pages/Following";
 import Trending from "./pages/Trending";
 
 const Container = styled.div`
-  min-height: calc(100vh - 56px);
+  min-height: 100vh;
 `;
 const Main = styled.div`
+  min-height: 100vh;
   background-color: ${({ theme }) => theme.bg};
 `;
-const Wrapper = styled.div`
-  padding: 20px 5%;
-`;
+// const Wrapper = styled.div`
+//   padding: 20px 5%;
+// `;
 
 export default function App() {
   const [darkMode, SetDarkMode] = useState(false);
@@ -34,7 +35,7 @@ export default function App() {
         <BrowserRouter>
           <Main>
             <Navbar darkMode={darkMode} setDarkMode={SetDarkMode} />
-            <Wrapper>
+            {/* <Wrapper> */}
               <Routes>
                 <Route path="/">
                   <Route index element={<Home />} />
@@ -57,7 +58,7 @@ export default function App() {
                   <Route path="trending" element={<Trending />} />
                 </Route>
               </Routes>
-            </Wrapper>
+            {/* </Wrapper> */}
           </Main>
         </BrowserRouter>
       </Container>

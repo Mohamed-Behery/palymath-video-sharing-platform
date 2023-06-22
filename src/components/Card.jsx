@@ -53,7 +53,7 @@ const Info = styled.div`
   font-weight: 300;
 `;
 
-function Card({ type }) {
+export default function Card({ type }) {
   return (
     <Link to="/video/test">
       <Container type={type}>
@@ -71,4 +71,3 @@ function Card({ type }) {
   );
 }
 
-export default Card;

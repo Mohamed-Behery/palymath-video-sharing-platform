@@ -11,6 +11,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
+  padding: 20px 5%;
 `;
 const Content = styled.div`
   flex-basis: 69%;
