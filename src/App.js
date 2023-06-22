@@ -6,7 +6,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Video from "./pages/Video";
 import Home from "./pages/Home";
-import Signin from "./pages/Signin";
+import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Search from "./pages/Search";
 import Profile from "./pages/Profile";
@@ -22,9 +22,6 @@ const Main = styled.div`
   min-height: 100vh;
   background-color: ${({ theme }) => theme.bg};
 `;
-// const Wrapper = styled.div`
-//   padding: 20px 5%;
-// `;
 
 export default function App() {
   const [darkMode, SetDarkMode] = useState(false);
@@ -35,7 +32,6 @@ export default function App() {
         <BrowserRouter>
           <Main>
             <Navbar darkMode={darkMode} setDarkMode={SetDarkMode} />
-            {/* <Wrapper> */}
               <Routes>
                 <Route path="/">
                   <Route index element={<Home />} />
@@ -44,8 +40,8 @@ export default function App() {
                   <Route path="video">
                     <Route path=":id" element={<Video />} />
                   </Route>
-                  <Route path="signin" element={<Signin />} />
-                  <Route path="login" element={<Signin />} />
+                  <Route path="login" element={<Login />} />
+                  <Route path="signin" element={<Login />} />
                   <Route path="register" element={<Register />} />
                   <Route path="signup" element={<Register />} />
                   <Route path="search">
@@ -58,7 +54,6 @@ export default function App() {
                   <Route path="trending" element={<Trending />} />
                 </Route>
               </Routes>
-            {/* </Wrapper> */}
           </Main>
         </BrowserRouter>
       </Container>

@@ -5,6 +5,7 @@ import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import LoginIcon from "@mui/icons-material/Login";
+import VideoCallIcon from '@mui/icons-material/VideoCall';
 import InfoIcon from "@mui/icons-material/Info";
 
 const Container = styled.div`
@@ -75,7 +76,7 @@ const LinkContent = styled(Link)`
   gap: 10px;
   color: ${({ theme }) => theme.text};
   margin: 5px 0;
-  padding: 15px 10px;
+  padding: 8px 10px;
   border-radius: 5px;
   &:hover {
     background: ${({ theme }) => theme.bg};
@@ -130,6 +131,12 @@ export default function Menu(props) {
             <LinkContent to="/login">
               <LoginIcon />
               <LinkName>تسجيل الدخول</LinkName>
+            </LinkContent>
+          </LinkLi>
+          <LinkLi>
+            <LinkContent to="/uplaod">
+              <VideoCallIcon />
+              <LinkName>رفع فيديو</LinkName>
             </LinkContent>
           </LinkLi>
           <LinkLi>
