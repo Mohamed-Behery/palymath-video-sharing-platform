@@ -1,13 +1,14 @@
 import { styled } from "styled-components";
-import VideoSrc from "../../assets/video.mp4";
+import VideoSrc from "../assets/video.mp4";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PauseIcon from "@mui/icons-material/Pause";
 import FastForwardIcon from "@mui/icons-material/FastForward";
 import FastRewindIcon from "@mui/icons-material/FastRewind";
 import SpeedIcon from "@mui/icons-material/Speed";
 import PictureInPictureAltIcon from "@mui/icons-material/PictureInPictureAlt";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
-import "./player.css";
+import { useRef, useState } from "react";
 
 const Container = styled.div`
   user-select: none;
@@ -20,15 +21,18 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  &:hover .wrapper {
+    opacity: 1;
+    bottom: 0;
+  }
 `;
 const Wrapper = styled.div`
   position: absolute;
   left: 0;
   right: 0;
   z-index: 1;
-  /* opacity: 0; */
-  /* bottom: -15px; */
-  bottom: 0;
+  opacity: 0;
+  bottom: -15px;
   width: 100%;
   transition: all 0.08s ease;
   &::before {
@@ -42,7 +46,7 @@ const Wrapper = styled.div`
     background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
   }
 `;
-const VideoPlayer = styled.video`
+const Player = styled.video`
   width: 100%;
   height: 100%;
   position: relative;
@@ -52,30 +56,30 @@ const Timeline = styled.div`
   width: 100%;
   cursor: pointer;
   direction: ltr;
+  &:hover div::before,
+  &:hover span {
+    display: block;
+  }
 `;
 const ProgressArea = styled.div`
   height: 3px;
   position: relative;
   background: rgba(255, 255, 255, 0.6);
 `;
-const TimeProgress = styled.span`
-  position: absolute;
-  left: 50%;
-  top: -25px;
-  font-size: 13px;
-  color: ${({ theme }) => theme.neutral};
-  pointer-events: none;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
-  @media screen and (max-width: 540px) {
-    display: none !important;
-  }
-`;
+// const TimeProgress = styled.span`
+//   position: absolute;
+//   left: 50%;
+//   top: -25px;
+//   font-size: 13px;
+//   color: ${({ theme }) => theme.neutral};
+//   pointer-events: none;
+//   transform: translateX(-50%);
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   display: none;
+// `;
 const ProgressBar = styled.div`
-  width: 50%;
   height: 100%;
   position: relative;
   background: #0061ab;
@@ -90,7 +94,7 @@ const ProgressBar = styled.div`
     border-radius: 50%;
     background: #0061ab;
     transform: translateY(-50%);
-    /* display: none; */
+    display: none;
   }
 `;
 const Controls = styled.div`
@@ -123,8 +127,25 @@ const OptionsRight = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 5px;
 `;
-const Volume = styled.button``;
+const Button = styled.button`
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: #f9f9f9;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  &:hover :where(svg, span) {
+    color: #fff;
+  }
+  &:active :where(svg, span) {
+    transform: scale(0.9);
+  }
+`;
 const VolumeRange = styled.input`
   height: 4px;
   margin-left: 3px;
@@ -132,6 +153,7 @@ const VolumeRange = styled.input`
   accent-color: #0061ab;
   position: relative;
   bottom: 3px;
+  cursor: pointer;
   @media screen and (max-width: 540px) {
     display: none !important;
   }
@@ -165,14 +187,18 @@ const Duration = styled.span`
     font-size: 12px;
   }
 `;
-const PlayPause = styled.button``;
-const SkipBackword = styled.button``;
-const SkipForword = styled.button``;
+const PlayPause = styled(Button)``;
+const SkipBackword = styled(Button)``;
+const SkipForword = styled(Button)``;
 const PlaybackSpeed = styled.div`
   display: flex;
   position: relative;
 `;
-const SpeedBtn = styled.button``;
+const SpeedBtn = styled(Button)`
+  &:hover + ul {
+    opacity: 1;
+  }
+`;
 const SpeedOptions = styled.ul`
   position: absolute;
   left: -40px;
@@ -185,7 +211,7 @@ const SpeedOptions = styled.ul`
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: opacity 0.13s ease;
-  z-index: 1;
+  z-index: 99;
   @media screen and (max-width: 540px) {
     width: 75px;
     left: -30px;
@@ -211,43 +237,88 @@ const SpeedOption = styled.li`
     color: #fff;
   }
 `;
-const PicInPic = styled.button``;
-const FullScreen = styled.button``;
+const PicInPic = styled(Button)``;
+const FullScreen = styled(Button)``;
 
-export default function Player() {
+export default function VideoPlayer() {
+  const videoRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [videoTime, setVideoTime] = useState(0);
+  const [progress, setProgress] = useState(0);
+
+  const videoHandler = (control) => {
+    if (control === "play") {
+      videoRef.current.play();
+      setPlaying(true);
+      var videoSrc = document.getElementById("video-src");
+      setVideoTime(videoSrc.duration);
+    } else if (control === "pause") {
+      videoRef.current.pause();
+      setPlaying(false);
+    }
+  };
+
+  const fastForward = () => {
+    videoRef.current.currentTime += 5;
+  };
+
+  const revert = () => {
+    videoRef.current.currentTime -= 5;
+  };
+
+  window.setInterval(function () {
+    setCurrentTime(videoRef.current?.currentTime);
+    setProgress((videoRef.current?.currentTime / videoTime) * 100);
+  }, 1000);
+
   return (
     <Container>
-      <Wrapper>
+      <Wrapper className="wrapper">
         <Timeline>
           <ProgressArea>
-            <TimeProgress>00:00</TimeProgress>
-            <ProgressBar></ProgressBar>
+            {/* <TimeProgress>00:00</TimeProgress> */}
+            <ProgressBar style={{ width: `${progress}%` }}></ProgressBar>
           </ProgressArea>
         </Timeline>
         <Controls>
-          <OptionsLeft className="option">
-            <Volume>
+          <OptionsLeft>
+            <Button>
               <VolumeUpIcon />
-            </Volume>
+            </Button>
             <VolumeRange type="range" min="0" max="1" step="any" />
             <Timer>
-              <CurrentTime>00:00</CurrentTime>
+              <Duration>
+                {" "}
+                {Math.floor(currentTime / 60) +
+                  ":" +
+                  ("0" + Math.floor(currentTime % 60)).slice(-2)}
+              </Duration>
               <Seperator> / </Seperator>
-              <Duration>00:00</Duration>
+              <CurrentTime>
+                {" "}
+                {Math.floor(videoTime / 60) +
+                  ":" +
+                  ("0" + Math.floor(videoTime % 60)).slice(-2)}
+              </CurrentTime>
             </Timer>
           </OptionsLeft>
-          <OptionsMiddle className="option">
-            <SkipBackword>
+          <OptionsMiddle>
+            <SkipBackword onClick={revert}>
               <FastRewindIcon />
             </SkipBackword>
             <PlayPause>
-              <PlayArrowIcon />
+              {playing ? (
+                <PauseIcon onClick={() => videoHandler("pause")} />
+              ) : (
+                <PlayArrowIcon onClick={() => videoHandler("play")} />
+              )}
             </PlayPause>
-            <SkipForword>
+            <SkipForword onClick={fastForward}>
               <FastForwardIcon />
             </SkipForword>
           </OptionsMiddle>
-          <OptionsRight className="option">
+          <OptionsRight>
             <PlaybackSpeed>
               <SpeedBtn>
                 <SpeedIcon />
@@ -269,7 +340,7 @@ export default function Player() {
           </OptionsRight>
         </Controls>
       </Wrapper>
-      <VideoPlayer src={VideoSrc} autoPlay />
+      <Player src={VideoSrc} autoPlay id="video-src" ref={videoRef} />
     </Container>
   );
 }

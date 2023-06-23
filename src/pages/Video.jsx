@@ -5,7 +5,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import Comments from "../components/Comments";
 import Card from "../components/Card";
 import ProfileImg from "../assets/avatar.png";
-import Player from "../components/VideoPlayer/Player";
+import VideoPlayer from "../components/VideoPlayer";
 
 const Container = styled.div`
   display: flex;
@@ -108,7 +108,7 @@ export default function Video() {
   return (
     <Container>
       <Content>
-        <Player />
+        <VideoPlayer />
         <Title>عنوان الفيديو</Title>
         <Details>
           <Info>المشاهدات • المدة</Info>
