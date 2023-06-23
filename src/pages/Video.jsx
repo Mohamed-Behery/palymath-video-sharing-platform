@@ -56,28 +56,28 @@ const Hr = styled.hr`
   background: ${({ theme }) => theme.border};
   margin: 15px 0;
 `;
-const Channel = styled.div`
+const Account = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const ChannelInfo = styled.div`
+const AccountlInfo = styled.div`
   display: flex;
   gap: 20px;
 `;
-const Image = styled.img`
+const ProfileImage = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
 `;
-const ChannelDetail = styled.div`
+const UserDetails = styled.div`
   display: flex;
   flex-direction: column;
   color: ${({ theme }) => theme.text};
 `;
-const ChannelName = styled.span`
+const UserName = styled.span`
   font-weight: 500;
 `;
-const ChannelCounter = styled.span`
+const FollowersCounter = styled.span`
   margin-top: 5px;
   margin-bottom: 20px;
   color: ${({ theme }) => theme.text};
@@ -127,17 +127,17 @@ export default function Video() {
           </Buttons>
         </Details>
         <Hr />
-        <Channel>
-          <ChannelInfo>
-            <Image src={ProfileImg} />
-            <ChannelDetail>
-              <ChannelName>صانع المحتوي</ChannelName>
-              <ChannelCounter>عدد المتابعين</ChannelCounter>
+        <Account>
+          <AccountlInfo>
+            <ProfileImage src={ProfileImg} />
+            <UserDetails>
+              <UserName>صانع المحتوي</UserName>
+              <FollowersCounter>عدد المتابعين</FollowersCounter>
               <Description>وصف الفيديو</Description>
-            </ChannelDetail>
-          </ChannelInfo>
+            </UserDetails>
+          </AccountlInfo>
           <Follow>متابعة</Follow>
-        </Channel>
+        </Account>
         <Hr />
         <Comments />
         <Hr />
