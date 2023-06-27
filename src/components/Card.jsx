@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Thumbnail from "../assets/thumbnail1.png";
 import ProfileImg from "../assets/avatar.png";
 
-
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
   margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
@@ -13,10 +12,10 @@ const Container = styled.div`
 `;
 const Image = styled.img`
   width: 100%;
-  height: ${(props) => props.type === "sm" ? "100px" : "202px"};
+  height: ${(props) => (props.type === "sm" ? "100px" : "202px")};
   aspect-ratio: 16 / 9;
   background-color: #999;
-  flex: ${(props) => props.type === "sm" ? "0.5" : "1"};
+  flex: ${(props) => (props.type === "sm" ? "0.5" : "1")};
   border-radius: 4px;
 `;
 const Details = styled.div`
@@ -38,6 +37,10 @@ const Title = styled.h1`
   font-size: 16px;
   font-weight: 500;
   color: ${({ theme }) => theme.text};
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 const ChannelName = styled.h2`
@@ -58,10 +61,13 @@ export default function Card({ type }) {
     <Link to="/video/test">
       <Container type={type}>
         <Image src={Thumbnail} type={type} />
-        <Details  type={type}>
+        <Details type={type}>
           <ChannelImage src={ProfileImg} type={type} />
           <Texts>
-            <Title>عنوان الفيديو</Title>
+            <Title>
+              عنوان الفيديو عنوان الفيديو عنوان الفيديو عنوان الفيديو عنوان
+              الفيديو عنوان الفيديو عنوان الفيديو
+            </Title>
             <ChannelName>صانع المحتوي</ChannelName>
             <Info>المشاهدات • المدة</Info>
           </Texts>
@@ -70,4 +76,3 @@ export default function Card({ type }) {
     </Link>
   );
 }
-
