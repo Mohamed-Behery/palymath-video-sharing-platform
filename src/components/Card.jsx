@@ -5,7 +5,7 @@ import ProfileImg from "../assets/avatar.png";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
-  margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
+  margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "36px")};
   display: ${(props) => props.type === "sm" && "flex"};
   gap: 10px;
   cursor: pointer;
@@ -33,9 +33,9 @@ const ChannelImage = styled.img`
 `;
 const Texts = styled.div``;
 
-const Title = styled.h1`
+const Title = styled.h2`
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   color: ${({ theme }) => theme.text};
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -43,30 +43,29 @@ const Title = styled.h1`
   overflow: hidden;
 `;
 
-const ChannelName = styled.h2`
+const ChannelName = styled.h3`
   font-size: 14px;
   color: ${({ theme }) => theme.text};
-  font-weight: 400;
-  margin: 10px 0;
+  font-weight: 500;
+  margin: 5px 0;
 `;
 
 const Info = styled.div`
   font-size: 14px;
   color: ${({ theme }) => theme.text};
-  font-weight: 300;
+  font-weight: 400;
 `;
 
 export default function Card({ type }) {
   return (
-    <Link to="/video/test">
-      <Container type={type}>
+        <Link to="/video/test">
+    <Container type={type}>
         <Image src={Thumbnail} type={type} />
         <Details type={type}>
           <ChannelImage src={ProfileImg} type={type} />
           <Texts>
             <Title>
-              عنوان الفيديو عنوان الفيديو عنوان الفيديو عنوان الفيديو عنوان
-              الفيديو عنوان الفيديو عنوان الفيديو
+           عنوان الفيديو
             </Title>
             <ChannelName>صانع المحتوي</ChannelName>
             <Info>المشاهدات • المدة</Info>

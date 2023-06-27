@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.border};
   @media screen and (max-width: 420px) {
     width: 90%;
-}
+  }
 `;
 
 const FormWrapper = styled.form`
@@ -79,13 +79,16 @@ const Redirect = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 8px;
+  color: ${({ theme }) => theme.text};
 `;
 const RedirectLabel = styled.span`
-  color: ${({ theme }) => theme.text};
   font-weight: 400;
 `;
 const RedirectLink = styled(Link)`
-  color: ${({ theme }) => theme.text};
+  color: inherit;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const prepareForm = (formArr) => {
@@ -103,45 +106,45 @@ export default function Form({
   const [form, setForm] = useState(initialForm);
   const onSubmitHandler = () => onSubmit(form, () => setForm(initialForm));
   const onChangeHandler = (e) =>
-    setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   const hasRedirect = !!redirect;
 
   return (
     <Container>
       <Wrapper>
-      <FormWrapper>
-      <FormTitle>{title}</FormTitle>
-      {formArr.map(({ label, name, type, placeholder }, index) => (
-        <FormControl key={index}>
-          <Label htmlFor={name}>{label}</Label>
-          <Input
-            id={name}
-            name={name}
-            type={type}
-            value={form[name]}
-            placeholder={placeholder}
-            required={true}
-            onChange={(e) => onChangeHandler(e)}
-          />
-        </FormControl>
-      ))}
-      <Button
-        onClick={(e) => {
-          e.preventDefault();
-          onSubmitHandler();
-        }}
-      >
-        {submitBtn}
-      </Button>
-      {hasRedirect && (
-        <Redirect>
-          <RedirectLabel>{redirect.label}&nbsp;</RedirectLabel>
-          <RedirectLink to={redirect.link.to}>
-            {redirect.link.label}
-          </RedirectLink>
-        </Redirect>
-      )}
-    </FormWrapper>
+        <FormWrapper>
+          <FormTitle>{title}</FormTitle>
+          {formArr.map(({ label, name, type, placeholder }, index) => (
+            <FormControl key={index}>
+              <Label htmlFor={name}>{label}</Label>
+              <Input
+                id={name}
+                name={name}
+                type={type}
+                value={form[name]}
+                placeholder={placeholder}
+                required={true}
+                onChange={(e) => onChangeHandler(e)}
+              />
+            </FormControl>
+          ))}
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              onSubmitHandler();
+            }}
+          >
+            {submitBtn}
+          </Button>
+          {hasRedirect && (
+            <Redirect>
+              <RedirectLabel>{redirect.label}&nbsp;</RedirectLabel>
+              <RedirectLink to={redirect.link.to}>
+                {redirect.link.label}
+              </RedirectLink>
+            </Redirect>
+          )}
+        </FormWrapper>
       </Wrapper>
     </Container>
   );
@@ -163,7 +166,7 @@ Form.defaultProps = {
     },
   ],
   submitBtn: "تسجيل الدخول",
-  onSumbit: console.log("Successful"),
+  onSumbit: console.log("مرحبا"),
   redirect: {
     label: "ليس لديك حساب ؟",
     link: {
