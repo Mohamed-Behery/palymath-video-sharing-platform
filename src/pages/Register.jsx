@@ -16,7 +16,7 @@ export default function Register() {
         label: "لديك حساب بالفعل ؟",
         link: {
           label: "تسجيل الدخول",
-          to: "/signin",
+          to: "/login",
         },
       }}
     />

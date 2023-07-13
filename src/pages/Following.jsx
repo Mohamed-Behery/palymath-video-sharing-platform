@@ -1,5 +1,7 @@
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import Card from "../components/Card";
+import axios from "axios";
 
 const Container = styled.div`
   padding: 20px 5%;
@@ -25,28 +27,23 @@ const Hr = styled.hr`
   margin: 10px 0;
 `;
 
-export default function Following() {
+export default function Trending({ type }) {
+  const [videos, setVideos] = useState([]);
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const res = await axios.get(`/videos/${type}`);
+      setVideos(res.data);
+    };
+    fetchVideos();
+  }, [type]);
   return (
     <Container>
       <Title>أحدث الفيديوهات</Title>
       <Hr />
       <Cards>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {videos.map((video) => (
+          <Card key={video._id} video={video} />
+        ))}
       </Cards>
     </Container>
   );

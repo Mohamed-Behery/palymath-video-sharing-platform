@@ -16,7 +16,6 @@ import Following from "./pages/Following";
 import Trending from "./pages/Trending";
 import { useSelector } from "react-redux";
 
-
 const Container = styled.div`
   min-height: 100vh;
 `;
