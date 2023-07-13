@@ -14,6 +14,8 @@ import Upload from "./pages/Upload";
 import About from "./pages/About";
 import Following from "./pages/Following";
 import Trending from "./pages/Trending";
+import { useSelector } from "react-redux";
+
 
 const Container = styled.div`
   min-height: 100vh;
@@ -25,6 +27,7 @@ const Main = styled.div`
 
 export default function App() {
   const [darkMode, SetDarkMode] = useState(false);
+  const { currentUser } = useSelector((state) => state.user);
 
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
@@ -32,28 +35,43 @@ export default function App() {
         <BrowserRouter>
           <Main>
             <Navbar darkMode={darkMode} setDarkMode={SetDarkMode} />
-              <Routes>
-                <Route path="/">
-                  <Route index element={<Home />} />
-                  <Route path="home" element={<Home />} />
-                  <Route path="feed" element={<Home />} />
-                  <Route path="video">
-                    <Route path=":id" element={<Video />} />
-                  </Route>
-                  <Route path="login" element={<Login />} />
-                  <Route path="signin" element={<Login />} />
-                  <Route path="register" element={<Register />} />
-                  <Route path="signup" element={<Register />} />
-                  <Route path="search">
-                  <Route path=":id" element={<Search />} />
-                  </Route>
-                  <Route path="profile" element={<Profile />} />
-                  <Route path="upload" element={<Upload />} />
-                  <Route path="About" element={<About />} />
-                  <Route path="following" element={<Following />} />
-                  <Route path="trending" element={<Trending />} />
+            <Routes>
+              <Route path="/">
+                <Route index element={<Home type="random" />} />
+                <Route path="home" element={<Home type="random" />} />
+                <Route path="feed" element={<Home type="random" />} />
+                <Route path="video">
+                  <Route path=":id" element={<Video />} />
                 </Route>
-              </Routes>
+                <Route
+                  path="login"
+                  element={currentUser ? <Home /> : <Login />}
+                />{" "}
+                <Route
+                  path="signin"
+                  element={currentUser ? <Home /> : <Login />}
+                />{" "}
+                <Route
+                  path="register"
+                  element={currentUser ? <Home /> : <Register />}
+                />
+                <Route
+                  path="signup"
+                  element={currentUser ? <Home /> : <Register />}
+                />
+                <Route path="search">
+                  <Route path=":id" element={<Search />} />
+                </Route>
+                <Route path="profile" element={<Profile />} />
+                <Route path="upload" element={<Upload />} />
+                <Route path="About" element={<About />} />
+                <Route
+                  path="following"
+                  element={<Following type="following" />}
+                />
+                <Route path="trending" element={<Trending type="trend" />} />
+              </Route>
+            </Routes>
           </Main>
         </BrowserRouter>
       </Container>

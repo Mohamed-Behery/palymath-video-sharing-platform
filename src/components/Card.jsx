@@ -1,7 +1,10 @@
-import { styled } from "styled-components";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Thumbnail from "../assets/thumbnail1.png";
-import ProfileImg from "../assets/avatar.png";
+import { styled } from "styled-components";
+import axios from "axios";
+import { format } from "timeago.js";
+// import Thumbnail from "../assets/thumbnail1.png";
+// import ProfileImg from "../assets/avatar.png";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
@@ -24,7 +27,7 @@ const Details = styled.div`
   gap: 12px;
   flex: 1;
 `;
-const ChannelImage = styled.img`
+const AccountImage = styled.img`
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -43,7 +46,7 @@ const Title = styled.h2`
   overflow: hidden;
 `;
 
-const ChannelName = styled.h3`
+const AccountName = styled.h3`
   font-size: 14px;
   color: ${({ theme }) => theme.text};
   font-weight: 500;
@@ -56,22 +59,33 @@ const Info = styled.div`
   font-weight: 400;
 `;
 
-export default function Card({ type }) {
+function Card({ type, video }) {
+  const [account, setAccount] = useState([]);
+
+  useEffect(() => {
+    const fetchAccount = async () => {
+      const res = await axios.get(`/users/find/${video?.userId}`);
+      setAccount(res.data);
+    };
+    fetchAccount();
+  }, [video?.userId]);
   return (
-        <Link to="/video/test">
-    <Container type={type}>
-        <Image src={Thumbnail} type={type} />
+    <Link style={{ textDecoration: "none" }} to={`/video/${video?._id}`}>
+      <Container type={type}>
+        <Image type={type} src={video?.imgUrl} />
         <Details type={type}>
-          <ChannelImage src={ProfileImg} type={type} />
+          <AccountImage type={type} src={account?.img} />
           <Texts>
-            <Title>
-           عنوان الفيديو
-            </Title>
-            <ChannelName>صانع المحتوي</ChannelName>
-            <Info>المشاهدات • المدة</Info>
+            <Title>{video?.title}</Title>
+            <AccountName>{account?.name}</AccountName>
+            <Info>
+              {video?.views} مشاهدة • {format(video?.createdAt)}
+            </Info>
           </Texts>
         </Details>
       </Container>
     </Link>
   );
 }
+
+export default Card;
