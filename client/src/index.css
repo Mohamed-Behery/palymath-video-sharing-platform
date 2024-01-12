@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: normal;
+  scrollbar-color: #0061ab #ddd;
+}
+::-webkit-scrollbar {
+  width: 0.6vw;
+}
+::-webkit-scrollbar-thumb {
+  background: #0061ab;
+}
+::-webkit-scrollbar-track {
+  background: #ddd;
+}
+body {
+  font-family: "Tajawal", sans-serif;
+  font-weight: 500;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+@media screen and (max-width: 900px) {
+  * {
+    user-select: none !important;
+    cursor: default !important;
+  }
+}
